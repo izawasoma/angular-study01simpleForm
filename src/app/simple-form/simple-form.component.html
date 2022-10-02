@@ -1,0 +1,20 @@
+<div id="simple_form">
+    <form #calcForm="ngForm" id="form">
+        <div id="input_box">
+            <input type="text" [(ngModel)]="text1" required name="fieldNum1" #fieldNum1="ngModel">
+             + 
+            <input type="text"[(ngModel)]="text2" required name="fieldNum2" #fieldNum2="ngModel">
+        </div>
+        <div id="button_box">
+            <button (click)="addAndShow()" [disabled]=" calcForm.invalid ">計算</button>
+        </div>
+    </form>
+    <h2>console</h2>
+    <div [class.ok]="calcForm.valid" [class.ng]="calcForm.invalid" id="console">
+        <p *ngIf="calcForm.valid">入力値は正常です</p>
+        <p *ngIf="fieldNum1.invalid">値１が未入力です</p>
+        <p *ngIf="fieldNum2.invalid">値２が未入力です</p>
+    </div>
+    <h2>▼▼▼▼ Result ▼▼▼▼</h2>
+    <div id="result">{{ result }}</div>
+</div>
